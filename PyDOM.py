@@ -8,9 +8,9 @@ from dataclasses import dataclass
 class Element:
     def __init__( self, element ):
         self._HTML      = str(element)
-        self.prettyHTML = element.prettify().strip(" \n ")
-        self.innerHTML  = element.decode_contents().strip(" \n ")
-        self.innerText  = element.text.strip(" \n ")
+        self.prettyHTML = element.prettify().strip(" \n\r\t")
+        self.innerHTML  = element.decode_contents().strip(" \n\r\t")
+        self.innerText  = self._get_innerText(element)
         self.attrs      = element.attrs
 
     '''
@@ -20,6 +20,14 @@ class Element:
 
     def __repr__(self):
         return str(self._HTML)
+
+    def _get_innerText(self, element):
+        text = ""
+        for child in element.children:
+            s = child.get_text(separator=' ', strip = True)
+            if( s != '' ):
+                text += s + '\n'
+        return text.strip("\n")
 
 
 @dataclass
