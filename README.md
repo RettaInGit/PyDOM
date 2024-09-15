@@ -17,7 +17,7 @@ print( id_elem.innerText )
 print( id_elem.attrs )
 
 # TAG
-tag_elems = document.getElementByTagName( *tag_name* )
+tag_elems = document.getElementsByTagName( *tag_name* )
 for tag_elem in tag_elems:
     print( tag_elem )
     print( tag_elem.innerHTML )
@@ -25,7 +25,7 @@ for tag_elem in tag_elems:
     print( tag_elem.attrs )
 
 # CLASS
-class_elems = document.getElementByClassName( *class_name* )
+class_elems = document.getElementsByClassName( *class_name* )
 for class_elem in class_elems:
     print( class_elem )
     print( class_elem.innerHTML )
